@@ -5,20 +5,20 @@
 // The class here is then constructed to instantiate the design.
 // See the Verilator manual for examples.
 
-#ifndef VERILATED_VSINEGEN_H_
-#define VERILATED_VSINEGEN_H_  // guard
+#ifndef VERILATED_VSIGDELAY_H_
+#define VERILATED_VSIGDELAY_H_  // guard
 
 #include "verilated.h"
 
-class Vsinegen__Syms;
-class Vsinegen___024root;
+class Vsigdelay__Syms;
+class Vsigdelay___024root;
 class VerilatedVcdC;
 
 // This class is the main interface to the Verilated model
-class Vsinegen VL_NOT_FINAL : public VerilatedModel {
+class Vsigdelay VL_NOT_FINAL : public VerilatedModel {
   private:
     // Symbol table holding complete model state (owned by this class)
-    Vsinegen__Syms* const vlSymsp;
+    Vsigdelay__Syms* const vlSymsp;
 
   public:
 
@@ -27,9 +27,11 @@ class Vsinegen VL_NOT_FINAL : public VerilatedModel {
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clk,0,0);
     VL_IN8(&rst,0,0);
-    VL_IN8(&en,0,0);
-    VL_IN8(&incr,7,0);
-    VL_OUT8(&dout,7,0);
+    VL_IN8(&wr,0,0);
+    VL_IN8(&rd,0,0);
+    VL_IN8(&offset,7,0);
+    VL_IN8(&mic_signal,7,0);
+    VL_OUT8(&delayed_signal,7,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
@@ -37,19 +39,19 @@ class Vsinegen VL_NOT_FINAL : public VerilatedModel {
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
-    Vsinegen___024root* const rootp;
+    Vsigdelay___024root* const rootp;
 
     // CONSTRUCTORS
     /// Construct the model; called by application code
     /// If contextp is null, then the model will use the default global context
     /// If name is "", then makes a wrapper with a
     /// single model invisible with respect to DPI scope names.
-    explicit Vsinegen(VerilatedContext* contextp, const char* name = "TOP");
-    explicit Vsinegen(const char* name = "TOP");
+    explicit Vsigdelay(VerilatedContext* contextp, const char* name = "TOP");
+    explicit Vsigdelay(const char* name = "TOP");
     /// Destroy the model; called (often implicitly) by application code
-    virtual ~Vsinegen();
+    virtual ~Vsigdelay();
   private:
-    VL_UNCOPYABLE(Vsinegen);  ///< Copying not allowed
+    VL_UNCOPYABLE(Vsigdelay);  ///< Copying not allowed
 
   public:
     // API METHODS
